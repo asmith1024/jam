@@ -10,7 +10,7 @@ defmodule Jam.Simple do
   """
   def mandelbrot(xO, yO, width, height, i, s, filename) do
     spec = {width, height, {xO, yO}, s, i}
-    pixels = Jam.mandelbrot(spec, &Jam.Color.simple1/1)
+    pixels = Jam.mandelbrot(spec, &Jam.Color.simple2/1)
     BMPv3.write_bmp(filename, width, height, pixels)
   end
 
@@ -21,7 +21,7 @@ defmodule Jam.Simple do
   """
   def julia(xO, yO, xC, yC, width, height, i, s, filename) do
     spec = {width, height, {xO, yO}, {xC, yC}, s, i}
-    pixels = Jam.julia(spec, &Jam.Color.simple1/1)
+    pixels = Jam.julia(spec, &Jam.Color.simple2/1)
     BMPv3.write_bmp(filename, width, height, pixels)
   end
 end
