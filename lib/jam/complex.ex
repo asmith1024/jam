@@ -1,4 +1,8 @@
 defmodule Jam.Complex do
+  @moduledoc """
+  Methods for working with complex numbers.
+  """
+
   def square({r, i}) do
     {r * r - i * i, 2 * r * i}
   end

@@ -1,9 +1,9 @@
 defmodule Jam.Color do
-  use Bitwise
-
   @moduledoc """
   Provides methods for converting a Jam.Point struct to a 24-bit RGB color. 
   """
+
+  use Bitwise
 
   @doc """
   Points in the set are black. Points outside are mod 3 for color, mod 127 for intensity.

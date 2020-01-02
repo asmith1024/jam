@@ -1,6 +1,13 @@
 defmodule Mix.Tasks.Single do
+  @moduledoc """
+  Tests values for a single point.
+  """
   use Mix.Task
 
+  @doc """
+  Provide Jam.Point initialization values for index, real Z, imaginary Z, real C, imaginary C and max_iterations.
+  Prints initial and final Jam.Point values, and pixel color.
+  """
   def run([index, rZ, iZ, rC, iC, iterations]) do
     pInitial = %Jam.Point{
       index: String.to_integer(index),

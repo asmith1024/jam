@@ -1,0 +1,35 @@
+<html>
+  <meta charset="utf-8"/>
+  <head>
+    <title>JaM test page</title>
+  </head>
+  <script type="text/javascript" src="test.js"></script>
+  <script type="text/javascript">
+    function initForms() {
+      initImage("mImg", "mX", "mY", "mS", 0.01);
+      initImage("jImg", "jX", "jY", "jS", 0.028);
+    }
+  </script>
+  <body onload="initForms()">
+    <link rel="stylesheet" type="text/css" href="test.css"/>
+    <form>
+      <div>
+        <input id="mX" type="text"/>
+        <input id="mY" type="text"/>
+        <input id="mS" type="text"/>
+        <div class="container"><img id="mImg" src="m.bmp"/></div>
+      </div>
+    </form>
+    <form>
+      <div>
+        <input id="jX" type="text"/>
+        <input id="jY" type="text"/>
+        <input id="jS" type="text"/>
+        <div class="container"><img id="jImg" src="j.bmp"/></div>
+      </div>
+    </form>
+    <div>
+      <textarea id="console"></textarea>
+    </div>
+  </body>
+</html>

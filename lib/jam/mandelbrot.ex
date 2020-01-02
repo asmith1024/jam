@@ -1,9 +1,13 @@
 defmodule Jam.Mandelbrot do
-  @doc """
-  Provide Jam.Point with initial_z, c and max_iterations.
-  Returns copy of Jam.Point with z and iterations set.
+  @moduledoc """
+  Calculates the state of a Jam.Point
   """
-  def point(p) do
+
+  @doc """
+  Provide Jam.Point p with initial_z, c and max_iterations.
+  Returns p with z and iterations set.
+  """
+  def point(%Jam.Point{} = p) do
     case iterate(p.initial_z, p.c, p.max_iterations) do
       {z, 0} -> %{p | z: z, iterations: p.max_iterations}
       {z, n} -> %{p | z: z, iterations: p.max_iterations - n}

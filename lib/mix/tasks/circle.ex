@@ -1,14 +1,31 @@
 defmodule Mix.Tasks.Circle do
-  use Mix.Task
-
   @moduledoc """
   Debug routines that create simple shapes.
   """
 
+  use Mix.Task
+
   @doc """
   Provide width and height in pixels. 
   Provide radius and step in reals.
-  Provide center of circle as a pixel location x, y.
+  Provide center of circle as a real-format pixel location x, y.
+
+  Writes a red circle on a blue background to file circle.bmp to the current directory.
+
+  ## Examples
+  
+  Full circle centered on the mid-point of the image:
+
+  > mix circle 100 100 25.0 1.0 0.0 0.0
+
+  Setting sun:
+
+  > mix circle 100 100 50.0 1.0 0.0 50.0
+
+  Top-left quadrant:
+
+  > mix circle 100 100 50.0 1.0 -50.0 -50.0
+
   """
   def run([width, height, radius, step, x, y]) do
     cspec = {
