@@ -7,11 +7,11 @@ defmodule Mix.Tasks.J do
 
   @doc """
   Renders a Julia set given the following parameters:
-  Origin X, origin Y, C x, C y (reals)
+  Image center X, image center Y, C x, C y (reals)
   width, height, max iterations (integers)
   step value (real)
 
-  The set is written to the file r[originX]i[originY]cr[Cx]ci[Cy]s[step]j.bmp in the current directory.
+  The set is written to the file r[center X]i[center Y]cr[C X]ci[C Y]s[step]j.bmp in the current directory.
 
   ## Examples
 

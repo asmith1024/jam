@@ -10,16 +10,16 @@ const jzX = 0.0;
 const jzY = 0.0;
 const jScale = 0.028;
 /*
-    ids has the following properties
+    ids has the following properties:
     img - id of image element
     x - id of X-value text element
     y - id of Y-value text element
     scale - id of scale-value text element
 
-    meta has the following properies
+    meta has the following properies:
     scale - pixel step/scale factor
-    oX - origin X
-    oY - origin Y
+    centerX - image center X/Real value
+    centerY - image center Y/Imaginary value
 */
 function initImage(ids, meta) {
     let scale = document.getElementById(ids.scale);
@@ -30,18 +30,18 @@ function initImage(ids, meta) {
         {
             textX: document.getElementById(ids.x),
             textY: document.getElementById(ids.y),
-            imgX: imageOrigin(meta.oX, meta.scale, img.width),
-            imgY: imageOrigin(meta.oY, meta.scale, img.height),
+            imgX: topLeftOffset(meta.centerX, meta.scale, img.width),
+            imgY: topLeftOffset(meta.centerY, meta.scale, img.height),
             scale: meta.scale
         }
     );  
     img.addEventListener("mousemove", handleMouseMove, false);
 }
 /*
-    Javascript equivalent of Jam.image_origin - TODO: API call for metadata instead
+    Javascript equivalent of Jam.image_offset - TODO: API call for metadata instead
 */
-function imageOrigin(origin, scale, pixels) {
-    return origin - mid(pixels) * scale;
+function topLeftOffset(center, scale, pixels) {
+    return center - mid(pixels) * scale;
 }
 /*
     Javascript equivalent of Jam.mid - TODO: API call for metadata instead
@@ -55,8 +55,8 @@ function mid(n) {
     context has the following properties:
     textX - text element for rendering X values
     textY - text element for rendering Y values
-    imgX - image origin X offset
-    imgY - image origin Y offset
+    imgX - image X offset
+    imgY - image Y offset
     scale - resolution or scale of each image/pixel
 */
 function initImageContext(image, context) {

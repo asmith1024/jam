@@ -4,43 +4,42 @@ defmodule Jam do
   """
 
   @doc """
-  Generates an image of a portion of the Mandelbrot set centred on origin 
+  Generates an image of a portion of the Mandelbrot set centred on center_xy 
   with width and height pixels and step distance between pixels on both 
   the real and imaginary axes. Resolution is determined by iterations.
-  Supply {r, i} for origin. Points are rendered into 24-bit RGB values
+  Supply {r, i} for center_xy. Points are rendered into 24-bit RGB values
   by fn_color.
   """
-  def mandelbrot({width, height, origin, step, iterations}, fn_color) do
-    plane(width, height, origin, step)
+  def mandelbrot({width, height, center_xy, step, iterations}, fn_color) do
+    plane(width, height, center_xy, step)
     |> Stream.map(&init_mandelbrot(&1, iterations))
     |> Stream.map(&Jam.Mandelbrot.point(&1))
     |> Stream.map(&fn_color.(&1))
   end
 
   @doc """
-  Generates an image of a portion of the Julia set centred on origin 
-  where the corresponding Mandelbrot set point is c. It has width 
+  Generates an image of a portion of the Julia set centred on center_xy 
+  where the corresponding Mandelbrot set point is c_xy. It has width 
   and height pixels and step distance between pixels on both the real 
   and imaginary axes.  Resolution is determined by iterations.
-  Supply {r, i} for both origin and c. Points are rendered into 24-bit
+  Supply {r, i} for both center_xy and c_xy. Points are rendered into 24-bit
   RGB values by fn_color.
   """
-  def julia({width, height, origin, c, step, iterations}, fn_color) do
-    plane(width, height, origin, step)
-    |> Stream.map(&init_julia(&1, c, iterations))
+  def julia({width, height, center_xy, c_xy, step, iterations}, fn_color) do
+    plane(width, height, center_xy, step)
+    |> Stream.map(&init_julia(&1, c_xy, iterations))
     |> Stream.map(&Jam.Mandelbrot.point(&1))
     |> Stream.map(&fn_color.(&1))
   end
 
-  defp plane(width, height, origin, step) do
+  defp plane(width, height, center_xy, step) do
     range = 0..(width * height - 1)
-    # the image origin corresponds to index 0, the top left-hand corner
-    image_origin = image_origin(width, height, origin, step)
-    Stream.map(range, &init_common(&1, width, image_origin, step))
+    image_top_left = image_top_left(width, height, center_xy, step)
+    Stream.map(range, &init_common(&1, width, image_top_left, step))
   end
 
-  defp image_origin(width, height, {oR, oI}, step) do
-    {oR - mid(width) * step, oI - mid(height) * step}
+  defp image_top_left(width, height, {oR, oI}, step) do
+    {oR - mid(width) * step, oI + mid(height) * step}
   end
 
   defp mid(x) do
@@ -56,22 +55,22 @@ defmodule Jam do
     row = div(index, width)
     col = rem(index, width)
 
-    {index, {imgR + col * step, imgI + row * step}}
+    {index, {imgR + col * step, imgI - row * step}}
   end
 
-  defp init_mandelbrot({index, c}, iterations) do
+  defp init_mandelbrot({index, c_xy}, iterations) do
     %Jam.Point{
       index: index,
-      c: c,
+      c: c_xy,
       max_iterations: iterations
     }
   end
 
-  defp init_julia({index, z}, c, iterations) do
+  defp init_julia({index, z_xy}, c_xy, iterations) do
     %Jam.Point{
       index: index,
-      initial_z: z,
-      c: c,
+      initial_z: z_xy,
+      c: c_xy,
       max_iterations: iterations
     }
   end

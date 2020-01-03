@@ -7,11 +7,11 @@ defmodule Mix.Tasks.M do
 
   @doc """
   Renders the Mandelbrot set given the following parameters:
-  Origin X, origin Y (reals)
+  Image center X, image center Y (reals)
   width, height, max iterations (integers)
   step value (real)
 
-  The set is written to the file r[originX]i[originY]s[step]m.bmp in the current directory.
+  The set is written to the file r[center X]i[center Y]s[step]m.bmp in the current directory.
 
   ## Examples
 
