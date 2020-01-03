@@ -13,7 +13,7 @@ defmodule Mix.Tasks.Circle do
   Writes a red circle on a blue background to file circle.bmp to the current directory.
 
   ## Examples
-  
+
   Full circle centered on the mid-point of the image:
 
   > mix circle 100 100 25.0 1.0 0.0 0.0

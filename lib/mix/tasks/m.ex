@@ -11,7 +11,7 @@ defmodule Mix.Tasks.M do
   width, height, max iterations (integers)
   step value (real)
 
-  The set is written to the file m.bmp in the current directory.
+  The set is written to the file r[originX]i[originY]s[step]m.bmp in the current directory.
 
   ## Examples
 
@@ -29,7 +29,7 @@ defmodule Mix.Tasks.M do
       String.to_integer(height),
       String.to_integer(i),
       String.to_float(s),
-      "m.bmp"
+      "r#{xO}i#{yO}s#{s}m.bmp"
     )
   end
 end

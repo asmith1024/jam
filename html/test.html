@@ -6,24 +6,30 @@
   <script type="text/javascript" src="test.js"></script>
   <script type="text/javascript">
     function initForms() {
-      initImage("mImg", "mX", "mY", "mS", 0.01);
-      initImage("jImg", "jX", "jY", "jS", 0.028);
+      initImage({img:"mImg", x:"mX", y:"mY", scale:"mS"}, {scale:mScale,oX:moX,oY:moY});
+      initImage({img:"jImg", x:"jX", y:"jY", scale:"jS"}, {scale:jScale,oX:joX,oY:joY});
     }
   </script>
   <body onload="initForms()">
     <link rel="stylesheet" type="text/css" href="test.css"/>
     <form>
       <div>
+        <label for="mX">pos X</label>
         <input id="mX" type="text"/>
+        <label for="mY">pos Y</label>
         <input id="mY" type="text"/>
+        <label for="mS">scale</label>
         <input id="mS" type="text"/>
         <div class="container"><img id="mImg" src="m.bmp"/></div>
       </div>
     </form>
     <form>
       <div>
+        <label for="jX">pos X</label>
         <input id="jX" type="text"/>
+        <label for="jY">pos Y</label>
         <input id="jY" type="text"/>
+        <label for="jS">scale</label>
         <input id="jS" type="text"/>
         <div class="container"><img id="jImg" src="j.bmp"/></div>
       </div>

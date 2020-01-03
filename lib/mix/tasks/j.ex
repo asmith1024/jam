@@ -11,7 +11,7 @@ defmodule Mix.Tasks.J do
   width, height, max iterations (integers)
   step value (real)
 
-  The set is written to the file j.bmp in the current directory.
+  The set is written to the file r[originX]i[originY]cr[Cx]ci[Cy]s[step]j.bmp in the current directory.
 
   ## Examples
 
@@ -32,7 +32,7 @@ defmodule Mix.Tasks.J do
       String.to_integer(height),
       String.to_integer(i),
       String.to_float(s),
-      "j.bmp"
+      "r#{xO}i#{yO}cr#{xC}ci#{yC}s#{s}j.bmp"
     )
   end
 end

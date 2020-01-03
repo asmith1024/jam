@@ -34,8 +34,13 @@ defmodule Jam do
 
   defp plane(width, height, origin, step) do
     range = 0..(width * height - 1)
-    mid_point = {mid(width), mid(height), origin}
-    Stream.map(range, &init_common(&1, width, mid_point, step))
+    # the image origin corresponds to index 0, the top left-hand corner
+    image_origin = image_origin(width, height, origin, step)
+    Stream.map(range, &init_common(&1, width, image_origin, step))
+  end
+
+  defp image_origin(width, height, {oR, oI}, step) do
+    {oR - mid(width) * step, oI - mid(height) * step}
   end
 
   defp mid(x) do
@@ -47,17 +52,11 @@ defmodule Jam do
     end
   end
 
-  defp init_common(index, width, {mid_row, mid_col, {r0, i0}}, step) do
+  defp init_common(index, width, {imgR, imgI}, step) do
     row = div(index, width)
     col = rem(index, width)
 
-    {
-      index,
-      {
-        r0 + (col - mid_col) * step,
-        i0 + (row - mid_row) * step
-      }
-    }
+    {index, {imgR + col * step, imgI + row * step}}
   end
 
   defp init_mandelbrot({index, c}, iterations) do
