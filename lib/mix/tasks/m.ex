@@ -1,12 +1,12 @@
 defmodule Mix.Tasks.M do
   @moduledoc """
-  Renders the Mandelbrot set.
+  Renders a portion of the Mandelbrot set.
   """
 
   use Mix.Task
 
   @doc """
-  Renders the Mandelbrot set given the following parameters:
+  Renders a portion of the Mandelbrot set given the following parameters:
   Image center X, image center Y (reals)
   width, height, max iterations (integers)
   step value (real)

@@ -34,11 +34,11 @@ defmodule Jam do
 
   defp plane(width, height, center_xy, step) do
     range = 0..(width * height - 1)
-    image_top_left = image_top_left(width, height, center_xy, step)
-    Stream.map(range, &init_common(&1, width, image_top_left, step))
+    top_left_offset = top_left_offset(width, height, center_xy, step)
+    Stream.map(range, &init_common(&1, width, top_left_offset, step))
   end
 
-  defp image_top_left(width, height, {oR, oI}, step) do
+  defp top_left_offset(width, height, {oR, oI}, step) do
     {oR - mid(width) * step, oI + mid(height) * step}
   end
 

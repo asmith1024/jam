@@ -32,7 +32,7 @@ defmodule Mix.Tasks.J do
       String.to_integer(height),
       String.to_integer(i),
       String.to_float(s),
-      "r#{centerX}i#{yO}cr#{cX}ci#{cY}s#{s}j.bmp"
+      "r#{centerX}i#{centerY}cr#{cX}ci#{cY}s#{s}j.bmp"
     )
   end
 end
