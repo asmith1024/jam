@@ -21,15 +21,15 @@ defmodule Mix.Tasks.M do
   > mix m -0.5 0.0 200 200 256 0.01
 
   """
-  def run([xO, yO, width, height, i, s]) do
+  def run([centerX, centerY, width, height, i, s]) do
     Jam.Simple.mandelbrot(
-      String.to_float(xO),
-      String.to_float(yO),
+      String.to_float(centerX),
+      String.to_float(centerY),
       String.to_integer(width),
       String.to_integer(height),
       String.to_integer(i),
       String.to_float(s),
-      "r#{xO}i#{yO}s#{s}m.bmp"
+      "r#{centerX}i#{centerY}s#{s}m.bmp"
     )
   end
 end

@@ -22,17 +22,17 @@ defmodule Mix.Tasks.J do
   > mix j 0.0 0.0 0.0 0.0 100 100 64 0.028
 
   """
-  def run([xO, yO, xC, yC, width, height, i, s]) do
+  def run([centerX, centerY, cX, cY, width, height, i, s]) do
     Jam.Simple.julia(
-      String.to_float(xO),
-      String.to_float(yO),
-      String.to_float(xC),
-      String.to_float(yC),
+      String.to_float(centerX),
+      String.to_float(centerY),
+      String.to_float(cX),
+      String.to_float(cY),
       String.to_integer(width),
       String.to_integer(height),
       String.to_integer(i),
       String.to_float(s),
-      "r#{xO}i#{yO}cr#{xC}ci#{yC}s#{s}j.bmp"
+      "r#{centerX}i#{yO}cr#{cX}ci#{cY}s#{s}j.bmp"
     )
   end
 end
