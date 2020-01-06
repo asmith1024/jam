@@ -20,6 +20,10 @@ defmodule Mix.Tasks.M do
   > mix m 0.0 0.0 100 100 1 0.1
   > mix m -0.5 0.0 200 200 256 0.01
 
+  An interesting part:
+
+  > mix m -0.74878 0.0659 200 200 256 0.00001
+
   """
   def run([centerX, centerY, width, height, i, s]) do
     Jam.Simple.mandelbrot(

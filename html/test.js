@@ -1,14 +1,4 @@
 const map = new WeakMap();
-
-const mX = -0.5;
-const mY = 0.0;
-const mScale = 0.01;
-
-const jX = 0.0;
-const jY = 0.0;
-const cX = 0.0;
-const cY = 0.0;
-const jScale = 0.028;
 /*
     ids has the following properties:
     img - id of image element
@@ -21,10 +11,10 @@ const jScale = 0.028;
     x - image center X/Real value
     y - image center Y/Imaginary value
 */
-function initImage(ids, meta) {
+function initImage(ids) {
     let scale = document.getElementById(ids.scale);
-    scale.value = meta.scale;
     let img = document.getElementById(ids.img);
+    let meta = metaFromUrl(img.src);
     initImageContext(
         img, 
         {
@@ -36,6 +26,7 @@ function initImage(ids, meta) {
             scale: meta.scale
         }
     );  
+    scale.value = meta.scale;
     img.addEventListener("mousemove", handleMouseMove, false);
 }
 /*
@@ -62,6 +53,30 @@ function mid(n) {
 */
 function initImageContext(image, context) {
     map.set(image, context);
+}
+/*
+    returns { x, y, scale } from an image URL
+    assumes j/m/jam task file naming convention 
+    r{centerX}i{centerY}[cr{cX}ci{cY}]s{s}(j|m).bmp
+    (cr and ci components are only present if the image is of a Julia set)
+*/
+function metaFromUrl(src) {
+    let pathPos = src.lastIndexOf("/");
+    filename = pathPos < 0 ? src : src.substring(pathPos + 1);
+    let rStart = filename.indexOf("r") + 1;
+    let rEnd = filename.indexOf("i");
+    let iStart = rEnd + 1;
+    let sPos = filename.lastIndexOf("s");
+    let jPos = filename.lastIndexOf("j");
+    let mPos = filename.lastIndexOf("m");
+    let sEnd = jPos < 0 ? mPos : jPos;
+    let iEnd = jPos < 0 ? sPos : filename.lastIndexOf("cr");
+    let sStart = sPos + 1;
+    return {
+        x: parseFloat(filename.substring(rStart, rEnd)),
+        y: parseFloat(filename.substring(iStart, iEnd)),
+        scale: parseFloat(filename.substring(sStart, sEnd))
+    };
 }
 
 function handleMouseMove(event) {

@@ -21,6 +21,10 @@ defmodule Mix.Tasks.J do
   > mix j 0.0 0.0 0.0 0.0 150 150 1 0.028
   > mix j 0.0 0.0 0.0 0.0 100 100 64 0.028
 
+  The set corresponding to an interesting part of the Mandelbrot set:
+  
+  > mix j 0.0 0.0 -0.74878 0.0659 200 200 256 0.00001
+
   """
   def run([centerX, centerY, cX, cY, width, height, i, s]) do
     Jam.Simple.julia(
