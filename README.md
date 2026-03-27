@@ -19,12 +19,14 @@ Developed by Claude Opus 4.6 via Kiro IDE.
 Web Workers require HTTP — opening `index.html` directly via `file://` won't work. Use any local server:
 
 **Python:**
-```
+
+```cli
 python -m http.server 8000
 ```
 
 **Node (npx):**
-```
+
+```cli
 npx serve .
 ```
 
