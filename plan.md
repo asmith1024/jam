@@ -27,7 +27,8 @@ what each Julia set looks like.
 05. The default Julia set is 0,0 on the Mandelbrot set, rendered from -2..2 as above.
 06. Left click+drag on the Mandelbrot set: as the cursor is dragged, the Julia set updates
     to correspond to the current cursor position on the Mandelbrot set.
-    6.1 Preserves the current zoom level of the Julia set.
+    6.1 Resets the Julia set view to the default range (-2..2, centered at 0,0),
+        since a zoomed-in view of a different Julia set is not meaningful.
     6.2 During drag (mouse move), the Julia set reverts to default rendering (B&W, default iterations)
         for responsiveness. On mouse up, re-render at the current enhancement level if enhanced.
 07. By default, render both sets in black and white with low iteration count for responsiveness.

@@ -179,6 +179,10 @@ function updateJuliaFromMandelbrot(e, useEnhanced) {
   const y = e.clientY - rect.top;
   const pt = canvasToComplex(mandelbrotCanvas, state.mandelbrot, x, y);
   state.julia.c = { r: pt.r, i: pt.i };
+  // Reset Julia view to default when exploring different c-values via drag
+  state.julia.centerR = 0;
+  state.julia.centerI = 0;
+  state.julia.range = DEFAULT_RANGE;
   // During drag, render at default (B&W) for responsiveness
   renderJulia(useEnhanced ? undefined : false);
 }
