@@ -246,6 +246,14 @@ mandelbrotCanvas.addEventListener('contextmenu', (e) => {
         state.mandelbrot.centerI = pt.i;
         state.mandelbrot.range /= ZOOM_FACTOR;
         renderMandelbrot();
+        // Mirror zoom to Julia set
+        const jPt = canvasToComplex(juliaCanvas, state.julia,
+          cx / mandelbrotCanvas.width * juliaCanvas.width,
+          cy / mandelbrotCanvas.height * juliaCanvas.height);
+        state.julia.centerR = jPt.r;
+        state.julia.centerI = jPt.i;
+        state.julia.range /= ZOOM_FACTOR;
+        renderJulia();
       }
     },
     {
@@ -255,6 +263,14 @@ mandelbrotCanvas.addEventListener('contextmenu', (e) => {
         state.mandelbrot.centerI = pt.i;
         state.mandelbrot.range *= ZOOM_FACTOR;
         renderMandelbrot();
+        // Mirror zoom to Julia set
+        const jPt = canvasToComplex(juliaCanvas, state.julia,
+          cx / mandelbrotCanvas.width * juliaCanvas.width,
+          cy / mandelbrotCanvas.height * juliaCanvas.height);
+        state.julia.centerR = jPt.r;
+        state.julia.centerI = jPt.i;
+        state.julia.range *= ZOOM_FACTOR;
+        renderJulia();
       }
     },
     {

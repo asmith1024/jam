@@ -38,8 +38,10 @@ what each Julia set looks like.
     a custom context dialog with the following options:
     8.1 Zoom in 10x. Re-center the image on the current point, zoom in 10x and re-render.
         Preserve the current enhance/unenhance state.
+        Also apply the same zoom (center + range change) to the Julia set and re-render it.
     8.2 Zoom out 10x. Re-center the image on the current point, zoom out 10x and re-render.
         Preserve the current enhance/unenhance state.
+        Also apply the same zoom (center + range change) to the Julia set and re-render it.
     8.3 Reset. Return to the default view (-2..2 on both axes) and clear any enhanced state
         back to default (black-and-white, default iterations).
     8.4 Enhance. Re-render the current image using Exponential Cyclic Coloring in LCH color space
@@ -49,8 +51,10 @@ what each Julia set looks like.
     a custom context dialog with the following options:
     9.1 Zoom in 10x. Re-center the image on the current point, zoom in 10x and re-render.
         Preserve the current enhance/unenhance state.
+        Does NOT trigger a Mandelbrot re-render.
     9.2 Zoom out 10x. Re-center the image on the current point, zoom out 10x and re-render.
         Preserve the current enhance/unenhance state.
+        Does NOT trigger a Mandelbrot re-render.
     9.3 Reset. Return to the default view (-2..2 on both axes) and clear any enhanced state
         back to default (black-and-white, default iterations).
     9.4 Enhance. Re-render the current image using Exponential Cyclic Coloring in LCH color space
