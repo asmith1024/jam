@@ -1,0 +1,91 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #1a1a1a;
+  color: #ccc;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  background: #222;
+  border-bottom: 1px solid #333;
+  flex-shrink: 0;
+}
+
+#reorient-btn {
+  background: #333;
+  color: #ccc;
+  border: 1px solid #555;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+#reorient-btn:hover { background: #444; }
+
+#info { font-size: 13px; opacity: 0.7; }
+
+#container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+#container.horizontal { flex-direction: row; }
+#container.vertical { flex-direction: column; }
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.5;
+}
+
+canvas {
+  background: #000;
+  cursor: crosshair;
+}
+
+/* Context menu */
+.context-menu {
+  position: fixed;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 4px 0;
+  min-width: 180px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.context-menu.hidden { display: none; }
+.context-menu-item {
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #ccc;
+}
+.context-menu-item:hover { background: #444; }
+.context-menu-separator {
+  height: 1px;
+  background: #444;
+  margin: 4px 0;
+}

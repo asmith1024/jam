@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAM — Julia and Mandelbrot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toolbar">
+    <button id="reorient-btn" title="Swap image order">⇄ Reorient</button>
+    <span id="info">Drag on Mandelbrot to explore Julia sets. Right-click for options.</span>
+  </div>
+  <div id="container">
+    <div class="pane" id="pane-mandelbrot">
+      <div class="label">Mandelbrot</div>
+      <canvas id="mandelbrot-canvas"></canvas>
+    </div>
+    <div class="pane" id="pane-julia">
+      <div class="label">Julia</div>
+      <canvas id="julia-canvas"></canvas>
+    </div>
+  </div>
+  <div id="context-menu" class="context-menu hidden">
+    <!-- populated dynamically -->
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
